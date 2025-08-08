@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>کافه ۴۶ - منوی دیجیتال</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Vazirmatn&display=swap');
+  * {
+    box-sizing: border-box;
+  }
+  body {
+    margin: 0; 
+    font-family: 'Vazirmatn', sans-serif;
+    background: linear-gradient(135deg, #99b3e1 0%, #3c9e9c 100%);
+    color: #4a4a4a;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+  }
+  header {
+    position: relative;
+    padding: 15px 20px;
+    background-image: url("https://wallpapercave.com/wp/wp4981728.jpg");
+    background-size: cover;
+    background-position: center;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    display: flex;
+    color: black;
+    justify-content: center;
+    align-items: center;
+    font-weight: bold;
+    font-size: 30px;
+  }
+  /* سه نقطه بالا راست */
+.menu-icon {
+  position: fixed;
+  top: 10px;       /* فاصله از بالا */
+  left: 10px;      /* فاصله از چپ */
+  font-size: 32px; /* بزرگ‌تر */
+  cursor: pointer;
+  z-index: 1000;   /* روی همه باشه */
+  user-select: none;
+}
+
+/* پاپ‌آپ کوچک که اول مخفی هست */
+.support-popup {
+  display: none;
+  position: absolute;
+  top: 40px;       /* فاصله از پایین سه نقطه */
+  left: 0;         /* از چپ صفر باشه تا زیر سه نقطه بیاد */
+  background-image: url("https://marketplace.canva.com/EAE5uusQ3yk/1/0/1600w/canva-blue-sky-white-pixel-art-kids-wallpaper-desktop-4EaiQksiYS4.jpg"); 
+  background-size: cover;
+  background-position: center;
+  padding: 20px 35px;
+  border-radius: 10px;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.5);
+  color: #000000;
+  font-weight: bold;
+  white-space: nowrap;
+  z-index: 10;
+}
+
+/* وقتی موس روی .menu-icon رفت، پاپ‌آپ نشون داده میشه */
+.menu-icon:hover .support-popup {
+  display: block;
+}
+
+  /* جستجو */
+  .search-container {
+    padding: 15px 20px;
+    background: #73aed2;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+  }
+  input[type="search"] {
+    width: 100%;
+    padding: 12px 15px;
+    border: 2px solid #0b737a;
+    border-radius: 25px;
+    font-size: 16px;
+    transition: border-color 0.3s ease;
+    outline: none;
+  }
+  input[type="search"]:focus {
+    border-color: #3ccdb7;
+  }
+  /* دسته بندی اسلایدی */
+  .categories {
+    display: flex;
+    overflow-x: auto;
+    padding: 10px 0;
+    gap: 15px;
+    background: linear-gradient(135deg, #d4f1f2 0%, #78abd0 100%);
+    box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+    scroll-behavior: smooth;
+  }
+  .categories::-webkit-scrollbar {
+    height: 8px;
+  }
+  .categories::-webkit-scrollbar-thumb {
+    background: #ffffff;
+    border-radius: 4px;
+  }
+  .category {
+    flex: 0 0 auto;
+    padding: 8px 18px;
+    background: #f5f0ec;
+    border-radius: 30px;
+    cursor: pointer;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    transition: background-color 0.3s ease;
+  }
+  .category.active,
+  .category:hover {
+    background: #5cd2b7;
+    color: rgb(255, 255, 255);
+  }
+  /* محصولات */
+  .products {
+    padding: 15px 20px;
+    display: grid;
+    grid-template-columns: repeat(auto-fit,minmax(230px,1fr));
+    gap: 18px;
+  }
+  .product-card {
+    background: #fff;
+    border-radius: 15px;
+    padding: 18px 20px;
+    box-shadow: 2px 4px 10px rgba(0, 0, 0, 0.08);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-weight: 600;
+    font-size: 17px;
+    gap: 12px;
+  }
+  .product-name {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    color: #262626;
+  }
+  .product-price {
+    color: #000000;
+    font-weight: 700;
+  }
+  /* فوتر */
+  footer {
+    margin-top: auto;
+    background: #ffffff;
+    padding: 20px;
+    box-shadow: 0 -2px 8px rgba(0,0,0,0.1);
+    text-align: center;
+    font-weight: 600;
+    color: #4a4a4a;
+  }
+  .address-box {
+    max-width: 450px;
+    margin: 10px auto 0;
+    background: #ffffff;
+    border-radius: 15px;
+    padding: 15px 20px;
+    box-shadow: 3px 10px 20px rgba(2, 24, 35, 0.2);
+    font-size: 15px;
+    line-height: 1.5;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+  }
+  /* ساعت کاری */
+  .working-hours {
+    margin-top: 12px;
+    font-size: 14px;
+    color: #777;
+    font-weight: 500;
+  }
+  /* Responsive */
+  @media (max-width: 480px) {
+    .products {
+      grid-template-columns: 1fr;
+      padding: 15px;
+    }
+    .category {
+      padding: 6px 14px;
+      font-size: 14px;
+    }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <h1>کافه ۴۶ ☕️</h1>
+  <div class="menu-icon" aria-label="شماره پشتیبانی">
+    ⋮
+    <div class="support-popup"><t> پشتیبانی: <br>۰۹۱۹۵۴۵۴۰۴۷📞</br></t></div>
+  </div>
+</header>
+
+<section class="search-container">
+  <input id="search" type="search" placeholder="جستجوی محصول..." autocomplete="off" />
+</section>
+
+<section class="categories" id="categories">
+  <div class="category active" data-cat="hotcoffee">☕️ نوشیدنی گرم</div>
+  <div class="category" data-cat="icedcoffee">❄️ نوشیدنی سرد</div>
+  <div class="category" data-cat="mocktail">🍹 موکتل</div>
+  <div class="category" data-cat="shake">🥤 شیک</div>
+  <div class="category" data-cat="smoothie">🍓 اسموتی</div>
+  <div class="category" data-cat="cake">🍰 کیک</div>
+  <div class="category" data-cat="dessert">🍩 دسر</div>
+</section>
+
+<section class="products" id="products">
+  <!-- محصولات اینجا توسط جاوااسکریپت اضافه می‌شود -->
+</section>
+
+<footer>
+  <div class="address-box"><img style="height: 40px;" src="https://www.iconpacks.net/icons/2/free-location-icon-2955-thumb.png" alt=""> شهر قدس، شهرک الهیه، بلوار باکری، کوچه شهید سنگری، پلاک ۴۶ </div>
+  <div class="working-hours">⏰ شنبه تا پنج‌شنبه ۷:۰۰ تا ۲۳:۰۰ | جمعه ۹:۰۰ تا ۲۲:۰۰</div>
+</footer>
+
+<script>
+  const products = {
+    hotcoffee: [
+      {name: 'اسپرسو', price: 60, emoji: '☕️'},
+      {name: 'آمریکانو', price: 80, emoji: '☕️'},
+      {name: 'لته', price: 100, emoji: '☕️'},
+      {name: 'کاپوچینو', price: 120, emoji: '☕️'},
+      {name: 'کارمل ماکیاتو', price: 120, emoji: '☕️'},
+      {name: 'موکا', price: 120, emoji: '☕️'},
+      {name: 'هات‌چاکلت', price: 90, emoji: '🍫'},
+      {name: 'قهوه', price: 80, emoji: '☕️'},
+      {name: 'ماچا', price: 170, emoji: '🍵'},
+      {name: 'چای سیاه', price: 100, emoji: '🍂'},
+      {name: 'چای سبز', price: 100, emoji: '🍵'},
+      {name: 'چای ماسالا', price: 80, emoji: '☕️'},
+      {name: 'چای کرک', price: 80, emoji: '☕️'}
+    ],
+    icedcoffee: [
+      {name: 'آیس اسپرسو', price: 65, emoji: '❄️'},
+      {name: 'آیس آمریکانو', price: 80, emoji: '❄️'},
+      {name: 'آیس لته', price: 110, emoji: '❄️'},
+      {name: 'آیس کاپوچینو', price: 100, emoji: '❄️'},
+      {name: 'آیس کارامل ماکیاتو', price: 120, emoji: '❄️'},
+      {name: 'آیس موکا', price: 120, emoji: '❄️'},
+      {name: 'آیس ماچا', price: 180, emoji: '❄️'}
+    ],
+    mocktail: [
+      {name: 'موهیتو', price: 200, emoji: '🍃'},
+      {name: 'رد موهیتو', price: 200, emoji: '🍃'},
+      {name: 'ماکتل شب', price: 200, emoji: '🌙'}
+    ],
+    shake: [
+      {name: 'شیرموز توت‌فرنگی', price: 300, emoji: '🍓'},
+      {name: 'شیرموز انبه', price: 300, emoji: '🥭'},
+      {name: 'شکلاتی', price: 300, emoji: '🍫'}
+    ],
+    smoothie: [
+      {name: 'اسموتی قهوه', price: 250, emoji: '☕️'},
+      {name: 'توت‌فرنگی و کیک شکلاتی', price: 250, emoji: '🍓🍰'},
+      {name: 'موز انبه', price: 300, emoji: '🍌🥭'}
+    ],
+    cake: [
+      {name: 'سن سباستین', price: 200, emoji: '🍰'},
+      {name: 'تیرامیسو', price: 150, emoji: '🍰'},
+      {name: 'پای سیب', price: 150, emoji: '🥧'},
+      {name: 'چاکلت موس', price: 150, emoji: '🍫'}
+    ],
+    dessert: [
+      {name: 'براونی بالز', price: 30, emoji: '🍫'},
+      {name: 'کوکو بالز', price: 30, emoji: '🍪'},
+      {name: 'مگنوم کیک', price: 120, emoji: '🍦'}
+    ]
+  };
+
+  const categoriesEl = document.getElementById('categories');
+  const productsEl = document.getElementById('products');
+  const searchInput = document.getElementById('search');
+
+  let activeCategory = 'hotcoffee';
+
+  function renderProducts(category, filter = '') {
+    productsEl.innerHTML = '';
+    let filtered = products[category].filter(p => p.name.includes(filter));
+    if(filtered.length === 0) {
+      productsEl.innerHTML = `<p style="grid-column: 1/-1; text-align:center; color:#999;">محصولی پیدا نشد</p>`;
+      return;
+    }
+    filtered.forEach(p => {
+      const div = document.createElement('div');
+      div.className = 'product-card';
+      div.innerHTML = `
+        <div class="product-name">${p.emoji} ${p.name}</div>
+        <div class="product-price">${p.price.toLocaleString()} تومان</div>
+      `;
+      productsEl.appendChild(div);
+    });
+  }
+
+  // بارگذاری اولیه
+  renderProducts(activeCategory);
+
+  // تغییر دسته‌بندی
+  categoriesEl.addEventListener('click', e => {
+    if(e.target.classList.contains('category')) {
+      [...categoriesEl.children].forEach(cat => cat.classList.remove('active'));
+      e.target.classList.add('active');
+      activeCategory = e.target.dataset.cat;
+      searchInput.value = '';
+      renderProducts(activeCategory);
+    }
+  });
+
+  // جستجو با autocomplete ساده
+  searchInput.addEventListener('input', e => {
+    const val = e.target.value.trim();
+    renderProducts(activeCategory, val);
+  });
+
+</script>
+
+</body>
+</html>
