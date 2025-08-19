@@ -9,10 +9,10 @@
   * {
     box-sizing: border-box;
   }
-  body {
+ body {
     margin: 0; 
     font-family: 'Vazirmatn', sans-serif;
-    background: linear-gradient(135deg, #30858b 0%, #1d7d84 100%);
+    background: linear-gradient(135deg, #000000 0%, #090909 100%);
     color: #4a4a4a;
     min-height: 100vh;
     display: flex;
@@ -21,12 +21,12 @@
   header {
     position: relative;
     padding: 15px 20px;
-    background: linear-gradient(135deg, #207379 0%, #1d7278 100%);
+    background: linear-gradient(135deg, #030606 0%, #050505 100%);
     background-size: cover;
     background-position: center;
     box-shadow: 0 2px 8px rgba(0,0,0,0.1);
     display: flex;
-    color: black;
+    color: rgb(255, 255, 255);
     justify-content: center;
     align-items: center;
     font-weight: bold;
@@ -47,9 +47,9 @@
 .support-popup {
   display: none;
   position: absolute;
-  top: 40px;       /* فاصله از پایین سه نقطه */
-  left: 0;         /* از چپ صفر باشه تا زیر سه نقطه بیاد */
-  background-color: #3ccdb7;
+  top: 40px;      
+  left: 0;        
+  background-image: url("https://coffee-slang.com/wp-content/uploads/2025/06/black-coffee-1024x683.webp"); 
   background-size: cover;
   background-position: center;
   padding: 20px 35px;
@@ -73,20 +73,20 @@
   /* جستجو */
   .search-container {
     padding: 15px 20px;
-    background: #52c0a5;
+    background: #000000;
     box-shadow: 0 2px 8px rgba(0,0,0,0.05);
   }
   input[type="search"] {
     width: 100%;
     padding: 12px 15px;
-    border: 2px solid #0b737a;
+    border: 2px solid #969696;
     border-radius: 25px;
     font-size: 16px;
     transition: border-color 0.3s ease;
     outline: none;
   }
   input[type="search"]:focus {
-    border-color: #3ccdb7;
+    border-color: #434343;
   }
   /* دسته بندی اسلایدی */
   .categories {
@@ -94,7 +94,7 @@
     overflow-x: auto;
     padding: 10px 0;
     gap: 15px;
-    background: linear-gradient(135deg,#227075 0%, #207379 100%);
+    background: linear-gradient(135deg,#090909 0%, #050404 100%);
     box-shadow: 0 2px 10px rgba(0,0,0,0.05);
     scroll-behavior: smooth;
   }
@@ -119,8 +119,9 @@
   }
   .category.active,
   .category:hover {
-    background: #5cd2b7;
+    background: linear-gradient(135deg,  #d3be9c 0%, #a68e69 100%);
     color: rgb(255, 255, 255);
+   box-shadow: 10px 2px 10px rgba(0,0,0,0.05);
   }
   /* محصولات */
   .products {
@@ -130,7 +131,7 @@
     gap: 18px;
   }
   .product-card {
-    background: linear-gradient(135deg,  #f7e4c3 0%, #c4b38e 100%);
+    background: linear-gradient(135deg,  #ebd0a1 0%, #ad936d 100%);
     border-radius: 15px;
     padding: 18px 20px;
     box-shadow: 2px 4px 10px rgba(0, 0, 0, 0.08);
@@ -154,12 +155,12 @@
   /* فوتر */
   footer {
     margin-top: auto;
-    background: #ffffff;
+    background: #000000;
     padding: 20px;
     box-shadow: 0 -2px 8px rgba(0,0,0,0.1);
     text-align: center;
     font-weight: 600;
-    color: #4a4a4a;
+    color: #363636;
   }
   .address-box {
     max-width: 450px;
@@ -179,7 +180,7 @@
   .working-hours {
     margin-top: 12px;
     font-size: 14px;
-    color: #777;
+    color: #b9b9b9;
     font-weight: 500;
   }
   /* Responsive */
@@ -330,6 +331,7 @@
 
 </body>
 </html>
+
 
 
 
